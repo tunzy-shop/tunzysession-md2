@@ -1,0 +1,15 @@
+{
+  "name": "tunzysession-md2",
+  "version": "2.0.0",
+  "description": "TUNZY MD2 SESSION - Web Pair Only",
+  "main": "api/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node api/index.js"
+  },
+  "dependencies": {
+    "@whiskeysockets/baileys": "^6.7.5",
+    "express": "^4.18.2",
+    "cors": "^2.8.5"
+  }
+}
