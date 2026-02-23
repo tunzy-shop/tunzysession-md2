@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TUNZY MD2 SESSION</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+  <h1>TUNZY MD2 SESSION</h1>
+  <p>Enter your WhatsApp number with country code</p>
+
+  <input type="text" id="number" placeholder="234xxxxxxxxxx">
+  <button onclick="generate()">Generate Pair Code</button>
+
+  <div id="result"></div>
+</div>
+
+<script>
+async function generate() {
+  const number = document.getElementById("number").value
+
+  const res = await fetch("/api/pair", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ number })
+  })
+
+  const data = await res.json()
+
+  if (data.pairingCode) {
+    document.getElementById("result").innerHTML =
+      `<h2>${data.pairingCode}</h2>
+       <p>Open WhatsApp → Linked Devices → Enter Code</p>`
+  } else {
+    document.getElementById("result").innerHTML = `<p>${data.error}</p>`
+  }
+}
+</script>
+
+</body>
+</html>
